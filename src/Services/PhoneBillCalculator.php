@@ -6,6 +6,15 @@ namespace Intcal\Services;
 class PhoneBillCalculator
 {
     /**
+     * Business rules:
+     *
+     * Calculate the bill ammount in cents from a string with the calls duration per number
+     *
+     * The number with less minutes is not charged
+     * Any fraction of minute will be consider as a whole minute
+     * If a number has less than 5 minutes the amount is 3 cents per minute
+     * If it is more or equal to 5 minutes then is 150 cents per minute
+     *
      * @param string $billStr
      * @return int
      */
@@ -14,9 +23,9 @@ class PhoneBillCalculator
         $billArr = $this->getBillArray($billStr);
         $minutesPerNumber = $this->getMinutesPerNumber($billArr);
 
-        $minutesPerNumber = $this->excludeFreeCall($minutesPerNumber);
+        $minutesPerNumber = $this->excludeFreeNumber($minutesPerNumber);
 
-        return $this->calulateBillamount($minutesPerNumber);
+        return $this->calculateBillAmount($minutesPerNumber);
     }
 
     /**
@@ -60,7 +69,7 @@ class PhoneBillCalculator
      * @param array $billMinutesPerNumber
      * @return array
      */
-    private function excludeFreeCall(array $billMinutesPerNumber): array
+    private function excludeFreeNumber(array $billMinutesPerNumber): array
     {
         asort($billMinutesPerNumber, SORT_NUMERIC);
         array_pop($billMinutesPerNumber);
@@ -68,7 +77,11 @@ class PhoneBillCalculator
         return $billMinutesPerNumber;
     }
 
-    private function calulateBillamount(array $minutesPerNumber)
+    /**
+     * @param array $minutesPerNumber
+     * @return int
+     */
+    private function calculateBillAmount(array $minutesPerNumber): int
     {
         $getAmount = function ($amount, $minutes) {
             if ($minutes < 5) {
