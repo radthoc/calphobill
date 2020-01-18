@@ -1,0 +1,67 @@
+{
+    "name": "elie29/zend-phpdi-config",
+    "description": "PSR-11 PHP-DI autowire container configurator for ZF2, ZF3 and Zend Expressive applications",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "keywords": [
+        "expressive",
+        "zf",
+        "zendframework",
+        "php-di",
+        "di",
+        "container",
+        "psr-11"
+    ],
+    "authors": [
+        {
+            "name": "Elie NEHME",
+            "email": "elie29@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/elie29/zend-di-config/issues",
+        "source": "https://github.com/elie29/zend-di-config"
+    },
+    "require": {
+        "php": "^7.1",
+        "container-interop/container-interop": "^1.2",
+        "php-di/php-di": "^6.0",
+        "zendframework/zend-stdlib": "^3.2"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "^1.6",
+        "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^0.10.3",
+        "phpstan/phpstan-mockery": "^0.10.2",
+        "phpunit/phpunit": "^7.5",
+        "zendframework/zend-coding-standard": "~1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zend\\DI\\Config\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZendTest\\DI\\Config\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "bin": [
+        "bin/add-autowires-entry"
+    ],
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "phpstan": "phpstan analyse src tests --error-format=checkstyle > phpstan.xml || true",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-clover clover.xml"
+    }
+}
