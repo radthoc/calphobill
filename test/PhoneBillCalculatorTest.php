@@ -9,11 +9,11 @@ class PhoneBillCalculatorTest extends TestCase
 {
 
     /** @var PhoneBillCalculator */
-    private $gygCodCha;
+    private $PhoneBillCalculator;
 
     public function setUp()
     {
-        $this->gygCodCha = new PhoneBillCalculator();
+        $this->PhoneBillCalculator = new PhoneBillCalculator();
     }
 
     public function testCalculatePhoneBill()
@@ -22,7 +22,7 @@ class PhoneBillCalculatorTest extends TestCase
    00:05:01,701-080-080
    00:05:00,400-234-090";
 
-        $billAmount = $this->gygCodCha->calculatePhoneBill($billStr);
+        $billAmount = $this->PhoneBillCalculator->calculatePhoneBill($billStr);
 
         $this->assertEquals(900, $billAmount);
     }
