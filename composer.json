@@ -1,8 +1,8 @@
 {
-    "name": "radt/intcal",
-    "description": "Interest calculator",
+    "name": "CalPhoBill",
+    "description": "Phone bill amount calculator",
     "type": "project",
-    "homepage": "https://github.com/zendframework/zend-expressive-skeleton",
+    "homepage": "https://github.com/radthoc/calphobill",
     "license": "BSD-3-Clause",
     "keywords": [
         "skeleton",
@@ -58,7 +58,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Intcal\\": "src/"
+            "Calphobill\\": "src/"
         }
     },
     "scripts": {

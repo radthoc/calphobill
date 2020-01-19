@@ -1,7 +1,6 @@
 <?php
 
-namespace Intcal\Services;
-
+namespace Calphobill\Services;
 
 class PhoneBillCalculator
 {

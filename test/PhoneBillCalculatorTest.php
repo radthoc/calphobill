@@ -1,8 +1,8 @@
 <?php
 
-namespace Intcal\Tests;
+namespace test;
 
-use Intcal\Services\PhoneBillCalculator;
+use Calphobill\Services\PhoneBillCalculator;
 use PHPUnit\Framework\TestCase;
 
 class PhoneBillCalculatorTest extends TestCase
